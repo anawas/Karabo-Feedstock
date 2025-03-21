@@ -178,13 +178,6 @@ jobs:
         if: ${{ !inputs.isNative }}
         run: |
           echo "arch=noarch" >> $GITHUB_ENV
-      - name: Install and publish to Conda
-        shell: bash -l {0}
-        run: |
-          conda activate base
-          conda install anaconda-client
-          anaconda -t ${{ secrets.ANACONDA_SECRET }} upload /usr/share/miniconda/conda-bld/${{ env.arch }}/${{ inputs.packageName }}*.conda --label ${{ inputs.label }} 
-
 
   test_base:
     needs: build_base
