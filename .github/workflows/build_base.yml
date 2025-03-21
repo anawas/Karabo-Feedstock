@@ -112,8 +112,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Install Conda
-        uses: conda-incubator/setup-miniconda@v2
+        uses: conda-incubator/setup-miniconda@v3
         with:
+          conda-remove-defaults: true
           auto-update-conda: true
       - name: Install Cuda Toolkit => ${{ inputs.useCuda }}
         if: ${{ inputs.useCuda }}
